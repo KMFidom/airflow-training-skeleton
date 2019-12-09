@@ -28,7 +28,7 @@ with DAG(
 
     storagetoBQtable = GoogleCloudStorageToBigQueryOperator(
         bucket= 'example_postgresstogcp',
-        source_objects = 'data.json',
+        source_objects = ['data.json'],
         schema_object= 'schema.json',
         destination_project_dataset_table= 'airflowbolcomdec-e4e4712278627.datafrompostgres.tabletest',
         task_id= 'storagetoBQtable'
