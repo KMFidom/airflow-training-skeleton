@@ -12,7 +12,7 @@ args = {
 }
 
 with DAG(
-    dag_id='dag_exercise-branching',
+    dag_id='dag_exercise-postgres',
     default_args=args,
     schedule_interval='@daily',
 ) as dag:
