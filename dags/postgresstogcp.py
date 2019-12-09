@@ -20,5 +20,6 @@ with DAG(
     task1 = PostgresToGoogleCloudStorageOperator(postgres_conn_id='exercise_postgres',
                                                   sql= 'select transfer_date from land_registry_price_paid_uk limit 10',
                                                   bucket= 'example_postgresstogcp',
-                                                  filename= 'test'
+                                                  filename= 'test',
+                                                task_id= 'storeinbucket'
                                                   )
