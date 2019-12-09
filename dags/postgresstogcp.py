@@ -22,7 +22,7 @@ with DAG(
         sql= 'select transfer_date from land_registry_price_paid_uk limit 10',
         bucket= 'example_postgresstogcp',
         filename= 'data.json',
-        schemafilename = 'schema.json',
+        schema_filename = 'schema.json',
         task_id= 'storeinbucket'
     )
 
@@ -33,3 +33,5 @@ with DAG(
         destination_project_dataset_table= 'airflowbolcomdec-e4e4712278627.datafrompostgres.tabletest',
         task_id= 'storagetoBQtable'
     )
+
+    storeinbucket >> storagetoBQtable
