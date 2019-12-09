@@ -4,14 +4,7 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.contrib.operators.postgres_to_gcs_operator import PostgresToGoogleCloudStorageOperator
-
-
-import json
-
-from airflow.contrib.hooks.gcs_hook import GoogleCloudStorageHook
-from airflow.contrib.hooks.bigquery_hook import BigQueryHook
-from airflow.models import BaseOperator
-from airflow.utils.decorators import apply_defaults
+from airflow.contrib.operators.gcs_to_bq import GoogleCloudStorageToBigQueryOperator
 
 args = {
     'owner': 'Airflow',
