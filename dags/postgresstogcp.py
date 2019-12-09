@@ -6,6 +6,13 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.contrib.operators.postgres_to_gcs_operator import PostgresToGoogleCloudStorageOperator
 
 
+import json
+
+from airflow.contrib.hooks.gcs_hook import GoogleCloudStorageHook
+from airflow.contrib.hooks.bigquery_hook import BigQueryHook
+from airflow.models import BaseOperator
+from airflow.utils.decorators import apply_defaults
+
 args = {
     'owner': 'Airflow',
     'start_date': airflow.utils.dates.days_ago(2),
@@ -17,9 +24,19 @@ with DAG(
     schedule_interval='@daily',
 ) as dag:
 
-    task1 = PostgresToGoogleCloudStorageOperator(postgres_conn_id='exercise-postgres',
-                                                  sql= 'select transfer_date from land_registry_price_paid_uk limit 10',
-                                                  bucket= 'example_postgresstogcp',
-                                                  filename= 'test',
-                                                task_id= 'storeinbucket'
-                                                  )
+    storeinbucket = PostgresToGoogleCloudStorageOperator(
+        postgres_conn_id='exercise-postgres',
+        sql= 'select transfer_date from land_registry_price_paid_uk limit 10',
+        bucket= 'example_postgresstogcp',
+        filename= 'data.json',
+        schemafilename = 'schema.json',
+        task_id= 'storeinbucket'
+    )
+
+    storagetoBQtable = GoogleCloudStorageToBigQueryOperator(
+        bucket= 'example_postgresstogcp',
+        source_objects = 'data.json',
+        schema_object= 'schema.json',
+        destination_project_dataset_table= 'airflowbolcomdec-e4e4712278627.datafrompostgres.tabletest',
+        task_id= 'storagetoBQtable'
+    )
