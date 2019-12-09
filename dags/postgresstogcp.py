@@ -17,7 +17,7 @@ with DAG(
     schedule_interval='@daily',
 ) as dag:
 
-    task1 = PostgresToGoogleCloudStorageOperator(postgres_conn_id='exercise_postgres',
+    task1 = PostgresToGoogleCloudStorageOperator(postgres_conn_id='exercise-postgres',
                                                   sql= 'select transfer_date from land_registry_price_paid_uk limit 10',
                                                   bucket= 'example_postgresstogcp',
                                                   filename= 'test',
