@@ -33,7 +33,7 @@ with DAG(
         destination_project_dataset_table= 'airflowbolcomdec-e4e4712278627.datafrompostgres.tabletest',
         source_format="NEWLINE_DELIMITED_JSON",
         write_disposition='WRITE_TRUNCATE',
-        time_partitioning = {'field':transfer_date},
+        time_partitioning = {'field':'transfer_date'},
         task_id= 'storagetoBQtable'
     )
 
