@@ -20,7 +20,8 @@ with DAG(
         task_id='scheduled_count',
         sql ="select count(*) from datafrompostgres.tabletest",
         destination_project_dataset_table='airflowbolcomdec-e4e4712278627.datafrompostgres.counts',
-        write_disposition = 'WRITE_APPEND'
+        write_disposition = 'WRITE_APPEND',
+        use_legacy_sql=False
     )
 
     scheduled_count
