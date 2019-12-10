@@ -3,7 +3,7 @@ from airflow.models import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
-from airflow.contrib.operators.bigquery_operator.BigQueryOperator import BigQueryOperator
+from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 
 args = {
     'owner': 'Airflow',
