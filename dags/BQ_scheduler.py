@@ -18,7 +18,7 @@ with DAG(
 
     scheduled_count = BigQueryOperator(
         task_id='scheduled_count',
-        sql ='select count(*) from airflowbolcomdec-e4e4712278627.datafrompostgres.tabletest',
+        sql ="select count(*) from 'airflowbolcomdec-e4e4712278627.datafrompostgres.tabletest'",
         destination_project_dataset_table='airflowbolcomdec-e4e4712278627.datafrompostgres.counts',
         write_disposition = 'WRITE_APPEND'
     )
