@@ -21,7 +21,8 @@ with DAG(
         task_id='connect_api',
         http_conn_id = 'https://api.exchangeratesapi.io/',
         endpoint = 'history?start_at=2018-01-01&end_at=2018-01-02&symbols=EUR&base=GBP',
-        gcs_bucket = 'use_case_airflow'
+        gcs_bucket = 'use_case_airflow',
+        gcs_path = 'data'
     )
 
     connect_api
