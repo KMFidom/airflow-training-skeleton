@@ -30,9 +30,10 @@ with DAG(
         bucket= 'example_postgresstogcp',
         source_objects = ['data.json'],
         schema_object= 'schema.json',
-        destination_project_dataset_table= 'airflowbolcomdec-e4e4712278627.datafrompostgres.tabletest${{ ds }}',
+        destination_project_dataset_table= 'airflowbolcomdec-e4e4712278627.datafrompostgres.tabletest',
         source_format="NEWLINE_DELIMITED_JSON",
         write_disposition='WRITE_TRUNCATE',
+        time_partitioning = 'transfer_date',
         task_id= 'storagetoBQtable'
     )
 
