@@ -19,7 +19,7 @@ with DAG(
 
     storeinbucket = PostgresToGoogleCloudStorageOperator(
         postgres_conn_id='exercise-postgres',
-        sql= 'select transfer_date from land_registry_price_paid_uk limit 10',
+        sql= 'select * from land_registry_price_paid_uk limit 10',
         bucket= 'example_postgresstogcp',
         filename= 'data.json',
         schema_filename = 'schema.json',
