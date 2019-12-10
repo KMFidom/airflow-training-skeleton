@@ -31,7 +31,7 @@ with DAG(
         source_objects = ['data.json'],
         schema_object= 'schema.json',
         destination_project_dataset_table= 'airflowbolcomdec-e4e4712278627.datafrompostgres.tabletest',
-        source_format="json",
+        source_format="NEWLINE_DELIMITED_JSON",
         task_id= 'storagetoBQtable'
     )
 
