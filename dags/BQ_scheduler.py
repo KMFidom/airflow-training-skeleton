@@ -18,7 +18,7 @@ with DAG(
 
     scheduled_count = BigQueryOperator(
         task_id='scheduled_count',
-        sql ="select cast('{{execution_date.strftime('%Y-%m-%d %H:%M')}}') as TIMESTAMP) as rundate, count(*) as aantal_records from datafrompostgres.tabletest",
+        sql ="select cast('{{execution_date.strftime('%Y-%m-%d %H:%M')}}') as TIMESTAMP as rundate, count(*) as aantal_records from datafrompostgres.tabletest",
         destination_dataset_table='datafrompostgres.counts',
         write_disposition = 'WRITE_APPEND',
         use_legacy_sql=False
